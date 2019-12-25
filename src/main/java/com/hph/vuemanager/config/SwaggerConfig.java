@@ -26,7 +26,7 @@ public class SwaggerConfig {
                 .build().apiInfo(new ApiInfoBuilder()
                         .title("vue项目")
                         .description("vue项目demo")
-                        .version("9.0")
+                        .version("1.0")
                         .contact(new Contact("vue前端项目","https://github.com/hupenghui2020/vue-demo.git","1049970895@qq.com"))
                         .license("vueh后端接口项目")
                         .licenseUrl("https://github.com/hupenghui2020/vue-manager.git")
