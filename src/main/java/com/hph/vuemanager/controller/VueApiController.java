@@ -1,14 +1,13 @@
 package com.hph.vuemanager.controller;
 
+import com.hph.vuemanager.model.Article;
 import com.hph.vuemanager.model.MenuBar;
+import com.hph.vuemanager.vo.RecordItemVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
 
 /**
  * @author hph
@@ -18,41 +17,77 @@ import java.util.List;
 @RequestMapping("/todo")
 public class VueApiController {
 
-    @ApiOperation("获取左边菜单列表")
+    /**
+     * 菜单
+     */
+    List<MenuBar> menuBarList = new ArrayList<>();
+
+    /**
+     * 内容
+     */
+    Map<String,RecordItemVo> recordItemVoMap = new HashMap<>();
+
+    private int num = 0;
+
+    @ApiOperation("获取菜单列表")
     @GetMapping("/list")
     public Object getTodoList() {
 
-        List<MenuBar> menuBarList = new ArrayList<>();
+        return menuBarList;
+    }
 
+    @ApiOperation("添加菜单")
+    @PostMapping("/add")
+    public void addTodo() {
         MenuBar menuBar = new MenuBar();
 
-        menuBar.setId("1");
+        String id = String.valueOf(++num);
+
+        menuBar.setId(id);
 
         menuBar.setCount(0);
 
         menuBar.setLocked(false);
 
-        menuBar.setTitle("测试");
+        menuBar.setTitle("测试" + num);
 
         menuBarList.add(menuBar);
-        return menuBarList;
+
+        RecordItemVo recordItemVo = new RecordItemVo();
+
+
+
+        recordItemVoMap.put(id, )
     }
 
-    @ApiOperation("添加内容")
-    @PostMapping("/add")
-    public Object addTodo() {
-        return "sssssddddd";
-    }
-
-    @ApiOperation("获取内容")
-    @PostMapping("/get")
-    public Object getTodo() {
-        return "";
-    }
-
-    @ApiOperation("获取内容")
+    @ApiOperation("新增内容")
     @PostMapping("/record/add")
-    public Object addRecord() {
-        return "";
+    public void addRecord(@RequestParam(name = "id") String menuId,
+                          @RequestParam(name = "text") String title) {
+
+        Article article = new Article();
+
+        article.setTitle(title);
+
+        article.setIsDelete(false);
+
+        article.setChecked(false);
+
+        article.setId(UUID.randomUUID().toString());
+
+        RecordItemVo recordItemVo = recordItemVoMap.get(menuId);
+
+        recordItemVo.getArticleList().add(article);
+
+        MenuBar menuBar = recordItemVo.getMenuBar();
+
+        menuBar.setCount(menuBar.getCount() + 1);
+    }
+
+    @ApiOperation("获取内容")
+    @GetMapping("/{id}")
+    public Object getTodo(@PathVariable String id) {
+
+        return recordItemVoMap.get(id);
     }
 }

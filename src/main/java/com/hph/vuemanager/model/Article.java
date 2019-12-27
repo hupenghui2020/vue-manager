@@ -11,7 +11,7 @@ public class Article {
 
     private String id;
 
-    private String checked;
+    private Boolean checked;
 
     private String title;
 
