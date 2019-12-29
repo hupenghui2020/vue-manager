@@ -17,6 +17,4 @@ public class MenuBar {
     private Boolean locked;
 
     private Integer count;
-
-    private Integer order;
 }
