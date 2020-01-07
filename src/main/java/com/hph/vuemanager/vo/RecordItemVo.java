@@ -1,7 +1,7 @@
 package com.hph.vuemanager.vo;
 
 import com.hph.vuemanager.model.Article;
-import com.hph.vuemanager.model.MenuBar;
+import com.hph.vuemanager.model.Menu;
 import lombok.Data;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class RecordItemVo {
 
-    private MenuBar menuBar;
+    private Menu menu;
 
     private List<Article> articleList;
 }

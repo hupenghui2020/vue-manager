@@ -8,13 +8,15 @@ import lombok.Data;
  */
 
 @Data
-public class MenuBar {
+public class Menu {
 
-    private String id;
+    private int id;
 
     private String title;
 
-    private Boolean locked;
+    private int locked;
 
-    private Integer count;
+    private int count;
+
+    private int isDelete;
 }

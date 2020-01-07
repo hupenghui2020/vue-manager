@@ -1,5 +1,6 @@
 package com.hph.vuemanager.vo;
 
+import com.hph.vuemanager.model.Article;
 import lombok.Data;
 
 /**
@@ -12,5 +13,5 @@ public class ItemVo {
 
     private String menuId;
 
-    private String title;
+    private Article article;
 }

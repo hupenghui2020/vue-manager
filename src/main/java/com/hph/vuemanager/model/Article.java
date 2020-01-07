@@ -13,11 +13,13 @@ import java.io.Serializable;
 @ApiModel(description = "")
 public class Article implements Serializable {
 
-    private String id;
+    private int id;
 
-    private Boolean checked;
+    private int checked;
 
     private String title;
 
-    private Boolean isDelete;
+    private int isDelete;
+
+    private int menuId;
 }
