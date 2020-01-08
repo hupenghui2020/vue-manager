@@ -23,14 +23,14 @@ public class ArticleController {
     private IArticleService articleService;
 
     @ApiOperation("新增内容")
-    @PostMapping("/article/add")
+    @PostMapping("/add")
     public void addArticle(@RequestBody Article article) {
 
         articleService.save(article);
     }
 
     @ApiOperation("删除内容")
-    @DeleteMapping("/article/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteArticle(@PathVariable String id) {
 
         articleService.update(new UpdateWrapper<Article>()
@@ -46,7 +46,7 @@ public class ArticleController {
     }
 
     @ApiOperation("获取内容列表")
-    @GetMapping("/article/list")
+    @GetMapping("/list")
     public Object getArticleList() {
 
         return articleService.list().

@@ -23,7 +23,7 @@ public class MenuController {
     private IMenuService menuService;
 
     @ApiOperation("获取菜单列表")
-    @GetMapping("/menu/list")
+    @GetMapping("/list")
     public Object getMenuList() {
 
         return menuService.list().
@@ -33,21 +33,21 @@ public class MenuController {
     }
 
     @ApiOperation("获取菜单")
-    @GetMapping("/menu/{id}")
+    @GetMapping("/{id}")
     public Object getMenu(@PathVariable String id) {
 
         return menuService.getById(id);
     }
 
     @ApiOperation("添加菜单")
-    @PostMapping("/menu/add")
+    @PostMapping("/add")
     public void addMenu(Menu menu) {
 
         menuService.save(menu);
     }
 
     @ApiOperation("删除菜单")
-    @DeleteMapping("/menu/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteMenu(@PathVariable String id) {
 
         menuService.update(new UpdateWrapper<Menu>()
@@ -56,7 +56,7 @@ public class MenuController {
     }
 
     @ApiOperation("修改菜单")
-    @PutMapping("/menu/update")
+    @PutMapping("/update")
     public void updateMenu(@RequestBody Menu menu) {
 
         menuService.update(new UpdateWrapper<>(menu));
